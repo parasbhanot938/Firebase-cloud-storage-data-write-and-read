@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:project1/constants/export.dart';
 class SignUp extends StatefulWidget {
@@ -12,6 +13,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
    final cloudStore = FirebaseFirestore.instance;
+   final realtimeDatabase = FirebaseDatabase.instance;
 
 
 
@@ -32,6 +34,8 @@ class _SignUpState extends State<SignUp> {
     getData();
 
   }
+
+
    Future<void>getData() async {
      CollectionReference _collectionRef = cloudStore.collection('Paras');
      var  data =await _collectionRef.get();
@@ -97,13 +101,21 @@ class _SignUpState extends State<SignUp> {
               ),
               TextButton(
                   onPressed: () {
+                   realtimeDatabase.reference(
+                    ).child("Data").set({
+                      "name":"bhanot",
+                      "age":"2",
+                      "mobile":"82888282",
+                    });
 
+
+/*
                     cloudStore.collection("Paras").doc("oooooo").set({
 
                       "Name":"PPPPPPPP",
 
 
-                    });
+                    });*/
 
 
                   /*  cloudStore.collection("Paras").doc("ccc").set({
@@ -116,8 +128,8 @@ class _SignUpState extends State<SignUp> {
                       "Name": "Paras Bhanot",
                       "id":"2"
                     });*/
-                      GetUtils.isLengthGreaterThan(usernameController!.text, 6) ? print('Name is valid') : print('Name is invalid!!!');
-                      GetUtils.isAlphabetOnly(passwordController!.text) ? print('Password is Valid') : print('Password is not valid');
+                      // GetUtils.isLengthGreaterThan(usernameController!.text, 6) ? print('Name is valid') : print('Name is invalid!!!');
+                      // GetUtils.isAlphabetOnly(passwordController!.text) ? print('Password is Valid') : print('Password is not valid');
 
 
 
