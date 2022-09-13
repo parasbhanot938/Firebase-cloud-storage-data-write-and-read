@@ -14,6 +14,7 @@ class _SignUpState extends State<SignUp> {
    final cloudStore = FirebaseFirestore.instance;
 
 
+
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController? usernameController;
