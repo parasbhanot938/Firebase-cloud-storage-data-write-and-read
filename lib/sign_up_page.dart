@@ -17,7 +17,7 @@ class _SignUpState extends State<SignUp> {
 
 
 
-  final _formKey = GlobalKey<FormState>();
+  final _formKey =  GlobalKey<FormState>();
 
   TextEditingController? usernameController;
   TextEditingController? passwordController;
